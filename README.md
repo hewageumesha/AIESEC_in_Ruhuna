@@ -1,1 +1,1 @@
-# aiesec_ruhuna
+# AIESEC IN RUHUNA
