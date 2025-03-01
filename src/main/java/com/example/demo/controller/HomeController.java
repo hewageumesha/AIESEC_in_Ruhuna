@@ -19,4 +19,21 @@ public class HomeController {
 	public String register() {
 		return "register";
 	}
+	
+	@GetMapping("/LCPdashboard")
+	public String LCPdashboard() {
+		return "LCPdashboard";
+	}
+	@GetMapping("/LCVPdashboard")
+	public String LCVPdashboard() {
+		return "LCVPdashboard";
+	}
+	@GetMapping("/Mdashboard")
+	public String Mdashboard() {
+		return "Mdashboard";
+	}
+	@GetMapping("/TLdashboard")
+	public String TLdashboard() {
+		return "TLdashboard";
+	}
 }
