@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100 font-roboto">
     <div class="container mx-auto p-4">
@@ -39,7 +40,7 @@
             </div>
         </div>
 
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden mb-6">
             <table class="min-w-full bg-white">
                 <thead class="bg-blue-500 text-white uppercase text-sm leading-normal">
                     <tr>
@@ -116,6 +117,11 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4">Task Progress</h2>
+            <canvas id="taskProgressChart"></canvas>
+        </div>
     </div>
 
     <!-- Task Modal -->
@@ -146,7 +152,6 @@
                 <div class="mb-4">
                     <label class="block text-gray-700">Assignee</label>
                     <select class="border p-2 rounded-lg w-full shadow">
-                        
                         <option value="Team Leader">Team Leader</option>
                         <option value="Member">Member</option>
                     </select>
@@ -185,6 +190,37 @@
                 // Delete task logic here
             }
         }
+
+        // Chart.js setup
+        const ctx = document.getElementById('taskProgressChart').getContext('2d');
+        const taskProgressChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Not Started', 'In Progress', 'Completed'],
+                datasets: [{
+                    label: 'Tasks',
+                    data: [1, 1, 1], // Example data, replace with actual task counts
+                    backgroundColor: [
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
